@@ -1,0 +1,26 @@
+<!-- prettier-ignore -->
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static "challenges/month.css" %}">
+  <link rel="stylesheet" href="{% static "challenges/includes/header.css" %}">
+{% endblock %}
+
+{% block page_title %}
+    {{ month_name|title }}'s Challenge 
+{% endblock %} 
+
+
+{% block content %}
+    {% include "challenges/include_snips/header.html"%}
+<!--'|title' is a filter* -->
+<h1>{{ month_name|title }}'s Challenge:</h1>
+<!-- * the double curly braces aren't traditional html but will b rendered* -->
+{%if text is not None%}
+<h2>{{ text }}</h2>
+{% else %}
+<h3 class="fallback">There is no challenge for this month yet!</h3>
+{% endif %} {% endblock %}
